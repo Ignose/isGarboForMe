@@ -20,9 +20,8 @@ export function main(command?: string): void {
   }
 
   if (totalMeat() > 3450) {
-    print(`You should be running Garbo!`)
+    print(`You should be running Garbo!`);
   } else {
-    print(`Maybe consider volcano`)
+    print(`Maybe consider volcano`);
   }
-
 }

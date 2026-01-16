@@ -12,29 +12,38 @@ const skillBonus = (skill: Skill, value: number) => (have(skill) ? value : 0);
  * Familiar choice
  * ========================= */
 
-const bestFam =
-  have($familiar`Robortender`) ? $familiar`Robortender` :
-  have($familiar`Jill-of-All-Trades`) ? $familiar`Jill-of-All-Trades` :
-  have($familiar`Hobo Monkey`) ? $familiar`Hobo Monkey` :
-  $familiar`Leprechaun`;
+const bestFam = have($familiar`Robortender`)
+  ? $familiar`Robortender`
+  : have($familiar`Jill-of-All-Trades`)
+  ? $familiar`Jill-of-All-Trades`
+  : have($familiar`Hobo Monkey`)
+  ? $familiar`Hobo Monkey`
+  : $familiar`Leprechaun`;
 
 const usingCornbeefadon =
   have($familiar`Cornbeefadon`) && bestFam !== $familiar`Jill-of-All-Trades`;
 
 export const familiarMultiplier = (() => {
   switch (bestFam) {
-    case $familiar`Robortender`: return 2;
-    case $familiar`Jill-of-All-Trades`: return 1.5;
-    case $familiar`Hobo Monkey`: return 1.25;
-    default: return 1;
+    case $familiar`Robortender`:
+      return 2;
+    case $familiar`Jill-of-All-Trades`:
+      return 1.5;
+    case $familiar`Hobo Monkey`:
+      return 1.25;
+    default:
+      return 1;
   }
 })();
 
 export const familiarBonus = (() => {
   switch (bestFam) {
-    case $familiar`Jill-of-All-Trades`: return 150;
-    case $familiar`Hobo Monkey`: return 75;
-    default: return 0;
+    case $familiar`Jill-of-All-Trades`:
+      return 150;
+    case $familiar`Hobo Monkey`:
+      return 75;
+    default:
+      return 0;
   }
 })();
 
@@ -56,8 +65,7 @@ const hat =
 const shirt = hasJParka ? 0 : itemBonus($item`Stephen's lab coat`, 5);
 
 const pants =
-  itemBonus($item`repaid diaper`, 15) ||
-  itemBonus($item`Great Wolf's beastly trousers`, 10);
+  itemBonus($item`repaid diaper`, 15) || itemBonus($item`Great Wolf's beastly trousers`, 10);
 
 export const familiarWeight = [
   hat,
@@ -115,4 +123,3 @@ export const flatBonus = [
  * ========================= */
 
 export const songboom = have($item`SongBoom™ BoomBox`) ? 1.25 : 1;
-
